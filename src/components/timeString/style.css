@@ -1,0 +1,8 @@
+.timer-container {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+}
+.timer-h1 {
+  font-size: 124px;
+}
