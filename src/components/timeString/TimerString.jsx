@@ -1,20 +1,17 @@
-import { useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import "./style.css";
+
 const TimerString = () => {
-  const timeH1 = useRef(null);
-  const timer = () => {
-    window.setInterval(() => {
-      let now = new Date();
-      timeH1.current.innerHTML = now.toLocaleTimeString("it-IT");
-      return timeH1;
-    }, 1000);
-  };
+  const [timeString, setTimeString] = useState(new Date());
 
   useEffect(() => {
-    timer();
-  });
+    const timerId = setInterval(() => {
+      setTimeString(new Date());
+    }, 1000);
+    return () => clearInterval(timerId);
+  }, [timeString]);
 
-  return <h1 ref={timeH1} className="timer-h1"> </h1>;
+  return <h1 className="timer-h1">{timeString.toLocaleString()}</h1>;
 };
 
 export default TimerString;

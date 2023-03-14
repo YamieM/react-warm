@@ -1,8 +1,14 @@
 .timer-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  width: 100vw;
+  align-items: center;
+  width: 100%;
 }
+
 .timer-h1 {
-  font-size: 124px;
+  font-size: calc(20px + 100 * (100vw / 1440));
+  text-align: center;
 }
+
+
