@@ -12,14 +12,15 @@ const Counter = () => {
     setCount(count + 1);
   }, [count]);
 
-  const readInp = useCallback((event) => {
+  const onInputChange = useCallback((event) => {
     setCount(Number(event.target.value));
   }, []);
+
   return (
     <div className="counter-container">
       <h1 className="counter-title">Введите начальное значение</h1>
       <h1 className="counter-arrow">👇</h1>
-      <input type="number" className="counter-input" onChange={readInp} />
+      <input type="number" className="counter-input" onChange={onInputChange} />
       <h1 className="counter-count">{count}</h1>
       <div className="counter-buttons">
         <button className="counter-button" onClick={valueUp}>
