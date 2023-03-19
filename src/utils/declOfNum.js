@@ -1,6 +1,6 @@
 const declOfNum = (numb, text) => {
-  numb = Math.abs(numb) % 100;
-  var numb1 = numb % 10;
+  numb = Math.abs(numb);
+  const numb1 = numb % 10;
   if (numb > 10 && numb < 20) {
     return `${numb} ${text[2]}`;
   }

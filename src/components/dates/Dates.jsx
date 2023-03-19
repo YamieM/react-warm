@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./style.css";
-import declOfNum from "../../utils/declOfNum";
+import { returnFirstState, returnSecondState} from "../../utils/returnFirstRes";
+import returnSecondRes from "../../utils/returnSecondRes";
 
 const Dates = () => {
   const [dateCurr, setDateCurr] = useState({
@@ -22,23 +23,12 @@ const Dates = () => {
     });
   };
 
-  //ЕСЛИ ЗАРАНЕЕ ЗАСУНУТЬ ДАТЫ В ПЕРЕМЕННЫЕ,
-  // ТО БУДЕТ КОРОЧЕ И МЕНЕЕ ЗАПУТАННО,
-  // НО "НУЖНО ИЗБЕГАТЬ ПРИМИТИВОВ(?)"
-
   const getFirstRes = () => {
     if (Date.parse(dateCurr.firstDate) > Date.parse(dateCurr.secondDate)) {
       setDateCurr((previousState) => {
         return {
           ...previousState,
-          resFirst: `${new Date(dateCurr.firstDate).toLocaleString("ru", {
-            dateStyle: "short",
-          })} было позже, чем ${new Date(dateCurr.secondDate).toLocaleString(
-            "en-US",
-            {
-              dateStyle: "long",
-            }
-          )}`,
+          resFirst: returnFirstState(dateCurr.firstDate, dateCurr.secondDate),
         };
       });
     } else if (
@@ -47,14 +37,7 @@ const Dates = () => {
       setDateCurr((previousState) => {
         return {
           ...previousState,
-          resFirst: `${new Date(dateCurr.firstDate).toLocaleString("de-DE", {
-            dateStyle: "short",
-          })} было раньше, чем ${new Date(dateCurr.secondDate).toLocaleString(
-            "en-US",
-            {
-              dateStyle: "long",
-            }
-          )}`,
+          resFirst: returnSecondState(dateCurr.firstDate, dateCurr.secondDate),
         };
       });
     } else {
@@ -65,21 +48,10 @@ const Dates = () => {
   };
 
   const getSecondRes = () => {
-    setDateCurr((previousState) => {
+    setDateCurr((previousState) => {     
       return {
         ...previousState,
-        resSecond: `Между ${new Date(dateCurr.firstDate).toLocaleString(
-          "ko-KR",
-          {
-            dateStyle: "long",
-          }
-        )} и ${new Date(dateCurr.secondDate).toLocaleString("en-US", {
-          dateStyle: "long",
-        })} разница  ${declOfNum(
-          Date.parse(new Date(dateCurr.firstDate)) / 1000 / 60 / 60 / 24 -
-            Date.parse(new Date(dateCurr.secondDate)) / 1000 / 60 / 60 / 24,
-          ["День", "Дня", "Дней"]
-        )}`,
+        resSecond: returnSecondRes(dateCurr.firstDate, dateCurr.secondDate),
       };
     });
   };
