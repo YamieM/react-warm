@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./style.css";
-import { returnFirstState, returnSecondState} from "../../utils/returnFirstRes";
-import returnSecondRes from "../../utils/returnSecondRes";
+import getDateComparison from "../../utils/getDateComparison";
+import getDifferenceOfDates from "../../utils/getDifferenceOfDates";
 
 const Dates = () => {
   const [dateCurr, setDateCurr] = useState({
@@ -23,12 +23,16 @@ const Dates = () => {
     });
   };
 
-  const getFirstRes = () => {
+  const setDateComparison = () => {
     if (Date.parse(dateCurr.firstDate) > Date.parse(dateCurr.secondDate)) {
       setDateCurr((previousState) => {
         return {
           ...previousState,
-          resFirst: returnFirstState(dateCurr.firstDate, dateCurr.secondDate),
+          resFirst: getDateComparison(
+            dateCurr.firstDate,
+            dateCurr.secondDate,
+            "позже"
+          ),
         };
       });
     } else if (
@@ -37,7 +41,11 @@ const Dates = () => {
       setDateCurr((previousState) => {
         return {
           ...previousState,
-          resFirst: returnSecondState(dateCurr.firstDate, dateCurr.secondDate),
+          resFirst: getDateComparison(
+            dateCurr.firstDate,
+            dateCurr.secondDate,
+            "раньше"
+          ),
         };
       });
     } else {
@@ -47,11 +55,11 @@ const Dates = () => {
     }
   };
 
-  const getSecondRes = () => {
-    setDateCurr((previousState) => {     
+  const setDifferenceOfDates = () => {
+    setDateCurr((previousState) => {
       return {
         ...previousState,
-        resSecond: returnSecondRes(dateCurr.firstDate, dateCurr.secondDate),
+        resSecond: getDifferenceOfDates(dateCurr.firstDate, dateCurr.secondDate),
       };
     });
   };
@@ -76,10 +84,10 @@ const Dates = () => {
           onChange={onChangeSecondDate}
         />
       </div>
-      <button className="dates-button" onClick={getFirstRes}>
+      <button className="dates-button" onClick={setDateComparison}>
         Сравнить даты
       </button>
-      <button className="dates-button" onClick={getSecondRes}>
+      <button className="dates-button" onClick={setDifferenceOfDates}>
         Разница в днях
       </button>
       <h1 className="dates-res">{dateCurr.resFirst}</h1>

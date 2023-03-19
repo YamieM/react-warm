@@ -1,6 +1,6 @@
-import declOfNum from "../utils/declOfNum";
+import declOfNum from "./declOfNum";
 
-const returnSecondRes = (firstDate, secondDate) => {
+const getDifferenceOfDates = (firstDate, secondDate) => {
   return `Между ${new Date(firstDate).toLocaleString("ko-KR", {
     dateStyle: "long",
   })} и ${new Date(secondDate).toLocaleString("en-US", {
@@ -12,4 +12,4 @@ const returnSecondRes = (firstDate, secondDate) => {
   )}`;
 };
 
-export default returnSecondRes;
+export default getDifferenceOfDates;
