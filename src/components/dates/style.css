@@ -1,0 +1,33 @@
+
+.dates-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 100px;
+}
+
+.date-input {
+  background-color: white;
+  color: black;
+  width: 200px;
+  border: 1px solid #2525263a;
+  border-radius: 3px;
+  padding: 5px;
+}
+
+.date-h1 {
+  font-size: 20px;
+  margin: 10px 0 5px 0;
+}
+.dates-res {
+  font-size: 20px;
+  margin-top: 20px;
+}
+.dates-button {
+  border: 1px solid #2525263a;
+  border-radius: 3px;
+  width: 200px;
+  padding: 5px;
+  margin-top: 10px;
+}
