@@ -55,6 +55,9 @@ body {
   letter-spacing: -0.5px;
 
   /* Light mode */
+}
+
+.layout {
   background-color: var(--page-bg);
   color: var(--text-color);
 }
